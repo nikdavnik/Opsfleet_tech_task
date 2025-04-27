@@ -1,4 +1,4 @@
-# 🚀 EKS + Karpenter Autoscaling with ARM64 and x86 Support
+# EKS + Karpenter Autoscaling with ARM64 and x86 Support
 
 This repo provides Terraform code to deploy an optimized Kubernetes (EKS) cluster on AWS with:
 - Graviton and x86 instance support
