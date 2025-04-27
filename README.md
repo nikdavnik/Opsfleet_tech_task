@@ -18,7 +18,7 @@ This repo provides Terraform code to deploy an optimized Kubernetes (EKS) cluste
 ## 🛠 Deployment Instructions
 
 ```bash
-git clone https://your-repo-url
+git clone https://github.com/nikdavnik/Opsfleet_tech_task
 cd eks-karpenter
 terraform init
 terraform apply
