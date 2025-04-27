@@ -17,9 +17,9 @@ spec:
           values: ["c7g.large", "t3.large", "t4g.medium", "m6g.medium"]
       kubeletConfiguration:
         containerRuntime: containerd
-  limits:
-    resources:
-      cpu: "1000"
+      limits:
+        resources:
+          cpu: "1000m" 
   disruption:
     consolidateAfter: 30s
     expireAfter: 720h

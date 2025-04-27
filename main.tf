@@ -37,7 +37,7 @@ module "eks" {
       min_size     = 2
       max_size     = 4
 
-      instance_types = ["t3.medium"]
+      instance_types = var.instance_type
       capacity_type  = "ON_DEMAND"
     }
   }
@@ -87,3 +87,17 @@ resource "helm_release" "karpenter" {
   }
 }
 
+# Auto-apply karpenter-nodepool.yaml after Karpenter and EKS are ready
+resource "null_resource" "apply_karpenter_nodepool" {
+  depends_on = [
+    helm_release.karpenter,
+    module.eks
+  ]
+
+  provisioner "local-exec" {
+    command = <<EOT
+      aws eks update-kubeconfig --name ${module.eks.cluster_name} --region ${var.region}
+      kubectl apply -f ${path.module}/karpenter-nodepool.yaml
+    EOT
+  }
+}
